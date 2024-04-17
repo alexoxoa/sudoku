@@ -88,7 +88,7 @@ public:
 
         int N2 = area * n + line2;
 
-        std::swap(table[N1], table[N2]);
+        swap(table[N1], table[N2]);
     }
 
     void swap_columns_small() {
@@ -368,9 +368,27 @@ int main() {
                     if (chl == table1[str - 1][stb - 1]) {
                         example.table[str - 1][stb - 1] = chl;
 
-                        system("cls");
-                        cout << "[L] - завершить игру" << "\n" << "[U] - начать игру заново" << "\n" << "[N] - работа с заметками" << "\n" << "[0] - ввод числа" << "\n" << "\n";
-                        example.show();
+                        bool hasZero = false;
+                        for (const auto& row : example.table) {
+                            for (int num : row) {
+                                if (num == 0) {
+                                    hasZero = true;
+                                    break;
+                                }
+                            }
+                            if (hasZero) {
+                                system("cls");
+                                cout << "[L] - завершить игру" << "\n" << "[U] - начать игру заново" << "\n" << "[N] - работа с заметками" << "\n" << "[0] - ввод числа" << "\n" << "\n";
+                                example.show();
+                                break;
+                            }
+                        }
+                        if (!hasZero) {
+                            cout << "Поздравляю, вы прошли игру! Вы можете начать игру заново [U] или покинуть ее [L]";
+                            cin >> deystv;
+                        
+                            
+                        }
 
                     }
                     else {
