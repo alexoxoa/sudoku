@@ -200,7 +200,20 @@ private:
 };
 
 
+void proverka(int *znach) {
 
+    while (cin.fail() || *znach < 1 || *znach > 9) {
+        // Очищаем флаг ошибки ввода
+        cin.clear();
+        // Очищаем буфер ввода до новой строки
+        while (cin.get() != '\n') continue;
+
+        cout << "Ошибка! Введите корректное число от 1 до 9: ";
+        cin >> *znach;
+    }
+
+
+}
 
 int main() {
     srand(time(0));
@@ -238,10 +251,12 @@ int main() {
 {1, 0, 1, 1, 1, 0, 0, 0, 0},
 {0, 0, 0, 0, 0, 1, 0, 1, 1}
     };
+
     vector<std::vector<int>> table1;
 
-    string hellou, deystv, slojnost;
-    cout << setw((150 - 5) / 2) << "START" << "\n" << setw((150 - 5) / 2) << "LEAVE" << "\n";
+    string hellou, deystv, slojnost, zamet;
+    cout << setw((95)) << "Добро пожаловать в игру Судоку" << "\n" << setw((95)) << "Введите команду для продолжения" << "\n" << "\n";
+    cout << setw(83) << "START" << "\n" << setw(83) << "LEAVE" << "\n";
     cin >> hellou;
 
     while (true) {
@@ -270,7 +285,6 @@ int main() {
 
     deystv = "U";
     int str, stb, chl, str2, stb2, chislozam;
-    string zamet;
 
     while (true) {
         if (deystv == "U") {
@@ -333,38 +347,15 @@ int main() {
                 if (deystv == "0") {
                     cout << "Введите строку" << "\n";
                     cin >> str;
-                    while (cin.fail() || str < 1 || str > 9) {
-                        // Очищаем флаг ошибки ввода
-                        cin.clear();
-                        // Очищаем буфер ввода до новой строки
-                        while (cin.get() != '\n') continue;
 
-                        cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                        cin >> str;
-                    }
+                    proverka(&str);
 
                     cout << "Введите столбец" << "\n";
                     cin >> stb;
-                    while (cin.fail() || stb < 1 || stb > 9) {
-                        // Очищаем флаг ошибки ввода
-                        cin.clear();
-                        // Очищаем буфер ввода до новой строки
-                        while (cin.get() != '\n') continue;
-
-                        cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                        cin >> stb;
-                    }
+                    proverka(&stb);
                     cout << "Введите число" << "\n";
                     cin >> chl;
-                    while (cin.fail() || chl < 1 || chl > 9) {
-                        // Очищаем флаг ошибки ввода
-                        cin.clear();
-                        // Очищаем буфер ввода до новой строки
-                        while (cin.get() != '\n') continue;
-
-                        cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                        cin >> chl;
-                    }
+                    proverka(&chl);
                     if (chl == table1[str - 1][stb - 1]) {
                         example.table[str - 1][stb - 1] = chl;
 
@@ -409,17 +400,21 @@ int main() {
                     while (true){
                         cout << "Режим работы с заметками:" << "\n";
                         cout << "[+] - создать заметку" << "\n" << "[?] - просмотреть заметку" << "\n" << "[-] - удалить заметки" << "\n" << "[B] - выйти" << "\n";
+                        cout << "Выберите действие:" << "\n";
+                        cin >> zamet;
+
+                        if (zamet == "B") {
+                            Sleep(5000);
+                            system("cls");
+                            cout << "[L] - завершить игру" << "\n" << "[U] - начать игру заново" << "\n" << "[N] - работа с заметками" << "\n" << "[0] - ввод числа" << "\n" << "\n";
+                            example.show();
+                            break;
+
+                        }
+
                         cout << "Введите строку" << "\n";
                         cin >> str2;
-                        while (cin.fail() || str2 < 1 || str2 > 9) {
-                            // Очищаем флаг ошибки ввода
-                            cin.clear();
-                            // Очищаем буфер ввода до новой строки
-                            while (cin.get() != '\n') continue;
-
-                            cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                            cin >> str2;
-                        }
+                        proverka(&str2);
 
                         cout << "Введите столбец" << "\n";
                         cin >> stb2;
@@ -432,20 +427,11 @@ int main() {
                             cout << "Ошибка! Введите корректное число от 1 до 9: ";
                             cin >> stb2;
                         }
-                        cout << "Выберите действие" << "\n";
-                        cin >> zamet;
+                       
                         if (zamet == "+") {
                             cout << "Введите число" << "\n";
                             cin >> chislozam;
-                            while (cin.fail() || chislozam < 1 || chislozam > 9) {
-                                // Очищаем флаг ошибки ввода
-                                cin.clear();
-                                // Очищаем буфер ввода до новой строки
-                                while (cin.get() != '\n') continue;
-
-                                cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                                cin >> chislozam;
-                            }
+                            proverka(&chislozam);
                             sudokuNotes.addNote(str2, stb2, chislozam);
                         }
                         if (zamet == "?") {
@@ -455,19 +441,11 @@ int main() {
                         if (zamet == "-") {
                             cout << "Введите число" << "\n";
                             cin >> chislozam;
-                            while (cin.fail() || chislozam < 1 || chislozam > 9) {
-                                // Очищаем флаг ошибки ввода
-                                cin.clear();
-                                // Очищаем буфер ввода до новой строки
-                                while (cin.get() != '\n') continue;
-
-                                cout << "Ошибка! Введите корректное число от 1 до 9: ";
-                                cin >> chislozam;
-                            }
+                            proverka(&chislozam);
                             sudokuNotes.deleteNote(str2, stb2, chislozam);
                         }
                         if (zamet == "B") {
-                            Sleep(5000);
+                            Sleep(3000);
                             system("cls");
                             cout << "[L] - завершить игру" << "\n" << "[U] - начать игру заново" << "\n" << "[N] - работа с заметками" << "\n" << "[0] - ввод числа" << "\n" << "\n";
                             example.show();
