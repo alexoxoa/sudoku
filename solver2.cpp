@@ -179,3 +179,51 @@
 //    }
 //    return 0;
 //}
+
+//////////////////////////////////////////////////////////////////
+
+        /*for (int i = 0; i < example.n * example.n; i++) {
+            for (int j = 0; j < example.n * example.n; j++) {
+                cout << example.table[i][j] << " ";
+            }
+            cout << endl;
+        }*/
+        //cout << "---------------------------------------------- ";
+
+        //    }
+        //    cout << endl;
+        //}
+
+       /* int i = rand() % (example.n * example.n);
+        int j = rand() % (example.n * example.n);
+        flook[i][j] == 0*/;
+
+
+        /*while (iterator < pow(example.n, 4)) {
+            int i = rand() % (example.n * example.n);
+            int j = rand() % (example.n * example.n);
+
+            if (flook[i][j] == 0) {
+                iterator++;
+                flook[i][j] = 1;
+
+                int temp = example.table[i][j];
+                example.table[i][j] = 0;
+                difficult--;
+
+                vector<vector<int>> table_solution;
+                for (int copy_i = 0; copy_i < example.n * example.n; copy_i++) {
+                    table_solution.push_back(example.table[copy_i]);
+                }
+
+                int i_solution = 0;
+                for (auto solution : solver.solve_sudoku(make_pair(example.n, example.n), table_solution)) {
+                    i_solution++;
+                }
+
+                if (i_solution != 1) {
+                    example.table[i][j] = temp;
+                    difficult++;
+                }
+            }
+        }*/

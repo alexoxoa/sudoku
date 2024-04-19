@@ -127,10 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="generationsudoku.cpp" />
+    <ClCompile Include="notes.cpp" />
     <ClCompile Include="solver2.cpp" />
     <ClCompile Include="sudoku.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="generationsudoku.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="notes.h" />
+    <ClInclude Include="proverkavvoda.h" />
     <ClInclude Include="solver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
