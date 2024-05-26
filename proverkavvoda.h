@@ -6,12 +6,10 @@ using namespace std;
 void proverka(int* znach) {
 
     while (cin.fail() || *znach < 1 || *znach > 9) {
-        // ќчищаем флаг ошибки ввода
         cin.clear();
-        // ќчищаем буфер ввода до новой строки
         while (cin.get() != '\n') continue;
 
-        cout << "ќшибка! ¬ведите корректное число от 1 до 9: ";
+        cout << "¬ведите корректное число от 1 до 9: ";
         cin >> *znach;
     }
 

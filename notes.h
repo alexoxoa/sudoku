@@ -10,49 +10,47 @@ private:
 
 public:
 
-    // Функция для добавления заметки для определенной ячейки судоку
+    //добавлениt заметки для определенной ячейки судоку
     void addNote(int row, int col, int number) {
         if (isValidCell(row, col) && isValidNumber(number)) {
             notes[row][col][number] = number;
         }
         else {
-            std::cout << "Некорректная строка, столбец или число!" << std::endl;
+            cout << "некорректный ввод" << endl;
         }
     }
 
-    // Функция для удаления заметки для определенной ячейки судоку
+    //удаление заметки для определенной ячейки судоку
     void deleteNote(int row, int col, int number) {
         if (isValidCell(row, col) && isValidNumber(number)) {
             notes[row][col][number] = 0;
         }
         else {
-            std::cout << "Некорректная строка, столбец или число!" << std::endl;
+            cout << "Некорректный ввод" << endl;
         }
     }
 
-    // Функция для вывода всех заметок для определенной ячейки судоку
+    //вывод всех заметок
     void printNotes(int row, int col) {
         if (isValidCell(row, col)) {
-            std::cout << "Заметки для клетки (" << row << ", " << col << "): ";
+            cout << "Заметки для клетки (" << row << ", " << col << "): ";
             for (int num : notes[row][col]) {
                 if (num != 0) {
-                    std::cout << num << "; ";
+                    cout << num << "; ";
                 }
             }
-            std::cout << std::endl;
+            cout << endl;
         }
         else {
-            std::cout << "Некорректная строка или столбец!" << std::endl;
+            cout << "Некорректный ввод!" << endl;
         }
     }
 
 private:
-    // Проверка валидности номера
     bool isValidNumber(int number) {
         return number >= 1 && number <= 9;
     }
 
-    // Проверка валидности ячейки
     bool isValidCell(int row, int col) {
         return row >= 1 && row <= 9 && col >= 1 && col <= 9;
     }

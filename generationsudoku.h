@@ -15,7 +15,7 @@ public:
         for (int i = 0; i < n * n; i++) {
             for (int j = 0; j < n * n; j++) {
                 table[i][j] = (i * n + i / n + j) % (n * n) + 1;
-            }
+            } 
         }
     }
 
@@ -52,7 +52,6 @@ public:
 
 
     void transposing() {
-        /* Transposing the whole grid */
         vector<vector<int>> newTable(9, vector<int>(9));
         for (int i = 0; i < table.size(); i++) {
             for (int j = 0; j < table[0].size(); j++) {
@@ -64,7 +63,6 @@ public:
     }
 
     void swap_rows_small() {
-        /* Swap the two rows */
         int area = rand() % n;
         int line1 = rand() % n;
 
@@ -87,7 +85,6 @@ public:
     }
 
     void swap_rows_area() {
-        /* Swap the two area horizon */
         int area1 = rand() % n;
 
         int area2 = rand() % n;
